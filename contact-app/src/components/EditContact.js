@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const AddContact = (props) => {
+const EditContact = (props) => {
+  const { state } = useLocation();
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const add = (e) => {
+  const [name, setName] = useState(state.name);
+  const [email, setEmail] = useState(state.email);
+
+  const update = (e) => {
     e.preventDefault();
     if (name === "" || email === "") {
-      alert("ALl the fields are mandatory!");
+      alert("All the fields are mandatory");
       return;
     }
-    props.addContactHandler({ name, email });
+    props.updateContactHandler({ id: state.id, name, email });
     setName("");
     setEmail("");
     navigate("/");
@@ -19,8 +21,8 @@ const AddContact = (props) => {
 
   return (
     <div className="ui main" style={{ marginTop: "5rem" }}>
-      <h2>Add Contact</h2>
-      <form className="ui form" onSubmit={add}>
+      <h2>Edit Contact</h2>
+      <form className="ui form" onSubmit={update}>
         <div className="field">
           <label>Name</label>
           <input
@@ -45,9 +47,9 @@ const AddContact = (props) => {
             }}
           ></input>
         </div>
-        <button className="ui button blue">ADD</button>
+        <button className="ui button blue">UPDATE</button>
       </form>
     </div>
   );
 };
-export default AddContact;
+export default EditContact;

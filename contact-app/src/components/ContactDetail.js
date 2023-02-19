@@ -7,7 +7,10 @@ const ContactDetail = (props) => {
   //   console.log(props);
   let { state } = useLocation();
   return (
-    <div className="main" style={{ marginBlock: "6rem" }}>
+    <div
+      className="ui column center aligned middle"
+      style={{ paddingBlock: "5rem" }}
+    >
       <div className="ui card centered">
         <div className="image">
           <img src={image} alt={state.name} />
@@ -16,13 +19,13 @@ const ContactDetail = (props) => {
           <div className="header">{state.name}</div>
           <div className="description">{state.email}</div>
         </div>
-      </div>
-      <div className="center-div">
-        <Link to="/">
-          <button className="ui button blue center">
-            Back to Contact List
-          </button>
-        </Link>
+        <div className="ui yellow bottom attached button">
+          <Link to="/">
+            <button className="ui button black centered">
+              Back to Contact List
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
