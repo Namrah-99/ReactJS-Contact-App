@@ -1,6 +1,6 @@
 # ReactJS-Project-1
 
-CONTACT MANAGER APP (React Fundamentals, React Router, React CRUD Axios, React Search, LocalStorage, Context API) covers following concepts:   
+CONTACT MANAGER APP (React Fundamentals, React Router, React CRUD Axios, React Search, Semantic UI, LocalStorage, Context API) covers following concepts:   
 
 COMMIT:  Complete Contact App  
 -----------------------------  
