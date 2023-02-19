@@ -1,6 +1,9 @@
 # ReactJS-Project-1
 
-Contact Manager App (React Fundamentals, React Router, React CRUD Axios, React Search) covers following concepts: 
+CONTACT MANAGER APP (React Fundamentals, React Router, React CRUD Axios, React Search, LocalStorage, Context API) covers following concepts:   
+
+COMMIT:  Complete Contact App  
+-----------------------------  
 
 --> Functional Components   
 
@@ -18,3 +21,15 @@ Contact Manager App (React Fundamentals, React Router, React CRUD Axios, React S
 
 --> Basic Form Handling  
 
+--> LocalStorage for persisting data  
+
+--> JSON server (npm package for creating a REST API effortlessly)
+
+COMMIT:  Context-API & Code-Refactoring  
+---------------------------------------  
+
+--> CONTEXT API for resolving Prop Drilling issue and persists data as well
+
+--> No need of LocalStorage
+
+--> Refactoring of code
