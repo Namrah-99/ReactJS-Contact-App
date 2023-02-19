@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import image from "../images/ase.jpg";
 import { useLocation } from "react-router-dom";
 
-const ContactDetail = (props) => {
-  //   console.log(props);
+const ContactDetail = () => {
   let { state } = useLocation();
+
   return (
     <div
       className="ui column center aligned middle"

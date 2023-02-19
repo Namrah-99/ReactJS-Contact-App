@@ -1,23 +1,40 @@
-import React, { useState, useRef } from "react"; //#endregion
+import React, { useState, useRef, useEffect } from "react"; //#endregion
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
 import image from "../images/hgghgh.jpg";
+import { useContactsCrud } from "../context/ContactsCrudContext";
 
 const ContactList = (props) => {
+  const {
+    contacts,
+    retrieveContacts,
+    removeContactHandler,
+    searchTerm,
+    searchResults,
+    searchHandler,
+  } = useContactsCrud();
+
   const [contactToDel, setContactToDel] = useState({});
-  const inputEl = useRef("");
+
   const [isShownlist, setIsShownlist] = useState(true);
+
   const deleteConactHandler = (contact) => {
     setContactToDel(contact);
   };
   const listHandler = (c) => {
     setIsShownlist(c);
   };
-  const getSearchTerm = () => {
-    props.searchKeyword(inputEl.current.value);
+  const onUserSearch = (e) => {
+    searchHandler(e.target.value);
   };
 
-  const renderContactList = props.contacts.map((contact) => {
+  useEffect(() => {
+    retrieveContacts();
+  }, []);
+
+  const renderContactList = (
+    searchTerm.length < 1 ? contacts : searchResults
+  ).map((contact) => {
     return (
       <ContactCard
         contact={contact}
@@ -29,34 +46,35 @@ const ContactList = (props) => {
   });
 
   return isShownlist ? (
-    <div class="ui grid">
-      <div class="sixteen wide column center aligned">
-        <div class="ui segment">
+    <div className="ui grid">
+      <div className="sixteen wide column center aligned">
+        <div className="ui segment">
           <h2>Contact List</h2>
         </div>
       </div>
-      <div class="two column row">
-        <div class="ui search left floated aligned eight wide column">
+      <div className="two column row">
+        <div className="ui search left floated aligned eight wide column">
           <div className="fluid ui icon input">
             <input
-              ref={inputEl}
               type="text"
               placeholder="Search Contacts"
               className="prompt"
-              value={props.term}
-              onChange={getSearchTerm}
+              value={searchTerm}
+              onChange={(e) => {
+                onUserSearch(e);
+              }}
             />
             <i className="search icon"></i>
           </div>
         </div>
-        <div class="column right floated right aligned six wide column">
+        <div className="column right floated right aligned six wide column">
           <Link to="/add">
             <button className="ui button blue">Add Contact</button>
           </Link>
         </div>
       </div>
-      <div class="sixteen wide column">
-        <div class="ui segment">
+      <div className="sixteen wide column">
+        <div className="ui segment">
           <div className="ui celled list">
             {renderContactList.length > 0
               ? renderContactList
@@ -67,7 +85,7 @@ const ContactList = (props) => {
     </div>
   ) : (
     <div className="ui centered grid">
-      <div class="middle aligned row">
+      <div className="middle aligned row">
         <div className="ui active fullscreen modal">
           <i className="close icon"></i>
           <div className="header">Deleting Contact</div>
@@ -97,7 +115,7 @@ const ContactList = (props) => {
             <button
               className="ui positive right labeled icon button"
               onClick={() => {
-                props.getContactId(contactToDel.id);
+                removeContactHandler(contactToDel.id);
                 setIsShownlist(true);
               }}
             >

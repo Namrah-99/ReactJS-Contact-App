@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContactsCrud } from "../context/ContactsCrudContext";
 import image from "../images/hgghgh.jpg";
+
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
+
   const handleClick = () => {
     // 👇️ toggle shown state
     // setIsShown((current) => !current);
     props.isShownlist(false);
     props.clickHander(props.contact);
   };
+
   return (
     <>
       <div className="ui grid list" key={id}>
-        <div classNmae="two wide column">
+        <div className="two wide column">
           <img className="ui tiny avatar image" src={image} alt="user" />
         </div>
         <div className="eight wide column middle aligned content">
@@ -27,7 +31,7 @@ const ContactCard = (props) => {
             style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}
             onClick={handleClick}
           ></i>
-          <Link to={"/edit"} state={props.contact}>
+          <Link to={`/edit/${id}`} state={props.contact}>
             <i
               className="edit alternate outline right floated icon big bb"
               style={{ color: "blue", marginTop: "7px" }}

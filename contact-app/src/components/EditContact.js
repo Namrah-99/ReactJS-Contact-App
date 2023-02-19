@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useContactsCrud } from "../context/ContactsCrudContext";
 
 const EditContact = (props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [name, setName] = useState(state.name);
   const [email, setEmail] = useState(state.email);
+  const { updateContactHandler } = useContactsCrud();
 
   const update = (e) => {
     e.preventDefault();
@@ -13,7 +15,7 @@ const EditContact = (props) => {
       alert("All the fields are mandatory");
       return;
     }
-    props.updateContactHandler({ id: state.id, name, email });
+    updateContactHandler({ id: state.id, name, email });
     setName("");
     setEmail("");
     navigate("/");
