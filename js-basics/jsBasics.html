@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./jsBasics.css" />
+  </head>
+  <body class="body" style="box-sizing: border-box; padding: 4rem">
+    <div class="container">
+      <h1>JS BASICS</h1>
+      <div class="container">
+        <!-- Dom Selection -->
+        <section id="contact" class="contact">
+          <div class="contact__form">
+            <form>
+              <div><p class="msg"></p></div>
+              <label for="fname">First Name</label>
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Your name.."
+                onclick="removeMsg()"
+              />
+
+              <label for="lname">Last Name</label>
+              <input
+                type="text"
+                id="lname"
+                name="lastname"
+                placeholder="Your last name.."
+                onclick="removeMsg()"
+              />
+
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </section>
+        <!-- Item List  -->
+        <section class="itemsList">
+          <h4>Items</h4>
+          <button type="submit" id="toggle">Toggle</button>
+          <ul>
+            <li class="item">Item 1</li>
+            <li class="item">Item 2</li>
+            <li class="item">Item 3</li>
+          </ul>
+        </section>
+        <section class="itemsList1">
+          <h4>Items</h4>
+          <ul id="contact__ul"></ul>
+        </section>
+      </div>
+      <div class="container">
+        <section id="eventPhases" class="eventPhases">
+          <!-- Event Bubbling & Capturing -->
+          <div>
+            <h2>Event Bubbling & Capturing</h2>
+            <div class="first box">
+              1
+              <div class="second box">
+                2
+                <input type="button" value="3 Click ME!" class="third box" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="preventDefault" class="preventDefault">
+          <!-- Event Prevent Default -->
+          <div>
+            <h2>Event Prevent Default</h2>
+            <div class="first1 box1">
+              <div class="second1 box1">
+                <input
+                  type="checkbox"
+                  value="3 Click ME!"
+                  class="third1 box1"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="./DOManipulation.js"></script>
+    <!-- <script src="./TernaryOperator.js"></script> -->
+    <!-- <script src="./EventListener&EventBubbling.js"></script> -->
+    <!-- <script src="./CallBack&ErrorHandling.js"></script> -->
+    <!-- <script src="./HigherOrderFunctions.js"></script> -->
+    <!-- <script src="./CallApplyBind.js"></script> -->
+    <!-- <script src="./ThisKeyword.js"></script> -->
+    <!-- <script src="./AsyncAwait.js"></script> -->
+    <!-- <script src="./Promises.js"></script>
+    <script src="./Destructuring.js"></script>
+    <script src="./DefaultParameters.js"></script> -->
+  </body>
+</html>
